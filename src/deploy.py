@@ -1,20 +1,24 @@
 #!/usr/bin/env python3
 """
-Helper script to deploy Terraform infrastructure with proper validation and checks.
+Simple hello world module.
 """
 
-import argparse
-import logging
-import subprocess
-import sys
-from pathlib import Path
-from typing import Optional
 
-# Configure logging
-logging.basicConfig(
-    level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-)
-logger = logging.getLogger(__name__)
+def hello_world(name: str = "World") -> str:
+    """
+    Return a hello message.
+
+    Args:
+        name: Name to greet
+
+    Returns:
+        Greeting message
+    """
+    return f"Hello, {name}!"
+
+
+if __name__ == "__main__":
+    print(hello_world())
 
 
 class TerraformDeployer:
