@@ -45,7 +45,7 @@ jobs:
         run: tflint --init
 
       - name: Run TFLint
-        run: tflint --format compact --config .tflint.hcl opentofu/
+        run: tflint --chdir opentofu/ --format compact --config ../.tflint.hcl
 
   python-quality:
     name: Python Code Quality
