@@ -155,3 +155,43 @@ variable "eventbridge_schedule_expression" {
   type        = string
   default     = null
 }
+
+# VPC Configuration (CKV_AWS_117)
+variable "subnet_ids" {
+  description = "List of subnet IDs for Lambda VPC configuration"
+  type        = list(string)
+  default     = []
+}
+
+variable "security_group_ids" {
+  description = "List of security group IDs for Lambda VPC configuration"
+  type        = list(string)
+  default     = []
+}
+
+# X-Ray Tracing (CKV_AWS_50)
+variable "enable_xray_tracing" {
+  description = "Enable X-Ray tracing for Lambda function"
+  type        = bool
+  default     = true
+}
+
+# Dead Letter Queue (CKV_AWS_116)
+variable "enable_lambda_dlq" {
+  description = "Enable Dead Letter Queue for Lambda function"
+  type        = bool
+  default     = true
+}
+
+variable "lambda_dlq_retention_seconds" {
+  description = "Message retention period for Lambda DLQ in seconds"
+  type        = number
+  default     = 1209600 # 14 days
+}
+
+# Code Signing (CKV_AWS_272)
+variable "code_signing_config_arn" {
+  description = "ARN of the Code Signing Config for Lambda"
+  type        = string
+  default     = null
+}
