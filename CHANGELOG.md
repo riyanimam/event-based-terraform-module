@@ -1,3 +1,9 @@
+## 1.0.0 (2026-01-20)
+
+### Features
+
+* Stand-Up Placeholder Resources, Code, and Structure ([cadc3e9](https://github.com/riyanimam/event-based-terraform-module/commit/cadc3e9951a40dbe56a76cb5963a3e3732bc976b))
+
 # Changelog
 
 All notable changes to this project will be documented in this file.
