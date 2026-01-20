@@ -1,28 +1,66 @@
+---
 repos:
+  # General checks
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v4.4.0
+    rev: v4.5.0
     hooks:
       - id: trailing-whitespace
       - id: end-of-file-fixer
       - id: check-yaml
       - id: check-json
+      - id: check-added-large-files
+        args: [--maxkb=500]
       - id: check-merge-conflict
+      - id: detect-private-key
+      - id: mixed-line-ending
+        args: [--fix=lf]
 
+  # Terraform/OpenTofu formatting and validation
   - repo: https://github.com/antonbabenko/pre-commit-terraform
-    rev: v1.83.5
+    rev: v1.88.0
     hooks:
       - id: terraform_fmt
+        args:
+          - --args=-recursive
       - id: terraform_docs
-      - id: terraform_tflint
+        args:
+          - --hook-config=--path-to-file=README.md
+          - --hook-config=--add-to-existing-file=true
+          - --hook-config=--create-file-if-not-exist=true
       - id: terraform_validate
+      - id: terraform_tflint
+        args:
+          - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
+      - id: terraform_tfsec
+        args:
+          - --args=--config-file=__GIT_WORKING_DIR__/.tfsec.yml
 
+  # Python code quality
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.1.14
+    hooks:
+      - id: ruff
+        args: [--fix, --exit-non-zero-on-fix]
+      - id: ruff-format
+
+  # YAML linting
   - repo: https://github.com/adrienverge/yamllint
-    rev: v1.32.0
+    rev: v1.33.0
     hooks:
       - id: yamllint
-        args: [-c=.yamllint.yaml]
+        args: [--strict, -c=.yamllint]
 
+  # Markdown linting and formatting
   - repo: https://github.com/igorshubovych/markdownlint-cli
-    rev: v0.35.0
+    rev: v0.39.0
     hooks:
       - id: markdownlint
+        args: [--fix]
+  - repo: https://github.com/executablebooks/mdformat
+    rev: 0.7.17
+    hooks:
+      - id: mdformat
+        additional_dependencies:
+          - mdformat-gfm
+          - mdformat-black
+        args: [--wrap, '120']
