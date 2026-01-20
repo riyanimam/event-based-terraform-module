@@ -4,6 +4,7 @@ Unit tests for event-based Terraform module.
 """
 
 import json
+import shutil
 import subprocess
 import unittest
 from pathlib import Path
@@ -291,7 +292,11 @@ class TestTerraformConfiguration(unittest.TestCase):
     def setUpClass(cls):
         """Set up test environment."""
         cls.module_dir = Path(__file__).parent.parent / "opentofu"
+        cls.terraform_available = shutil.which("terraform") is not None
 
+    @unittest.skipUnless(
+        shutil.which("terraform") is not None, "Terraform not available"
+    )
     def test_terraform_fmt(self):
         """Test that Terraform files are formatted correctly."""
         result = subprocess.run(
@@ -306,6 +311,9 @@ class TestTerraformConfiguration(unittest.TestCase):
             f"Terraform files not formatted correctly:\n{result.stdout}",
         )
 
+    @unittest.skipUnless(
+        shutil.which("terraform") is not None, "Terraform not available"
+    )
     def test_terraform_validate(self):
         """Test that Terraform configuration is valid."""
         # Initialize first
