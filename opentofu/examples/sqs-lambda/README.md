@@ -1,6 +1,7 @@
 # SQS-Lambda Example
 
-This example demonstrates how to use the event-based-terraform-module to create a Lambda function triggered by an SQS queue.
+This example demonstrates how to use the event-based-terraform-module to create a Lambda function triggered by an SQS
+queue.
 
 ## Prerequisites
 

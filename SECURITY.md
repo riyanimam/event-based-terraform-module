@@ -7,7 +7,7 @@ We release patches for security vulnerabilities for the following versions:
 | Version | Supported          |
 | ------- | ------------------ |
 | 1.x.x   | :white_check_mark: |
-| < 1.0   | :x:                |
+| \< 1.0  | :x:                |
 
 ## Reporting a Vulnerability
 
@@ -77,10 +77,10 @@ All pull requests are automatically scanned for:
 When using this module:
 
 1. **IAM Permissions**: Review and customize IAM policies for your use case
-2. **Encryption**: Enable encryption at rest and in transit where needed
-3. **Secrets Management**: Use AWS Secrets Manager or Parameter Store
-4. **Resource Policies**: Implement resource-based policies appropriately
-5. **Monitoring**: Enable CloudWatch alarms and AWS CloudTrail
+1. **Encryption**: Enable encryption at rest and in transit where needed
+1. **Secrets Management**: Use AWS Secrets Manager or Parameter Store
+1. **Resource Policies**: Implement resource-based policies appropriately
+1. **Monitoring**: Enable CloudWatch alarms and AWS CloudTrail
 
 ### Terraform State Security
 

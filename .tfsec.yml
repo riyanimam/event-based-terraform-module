@@ -6,9 +6,9 @@ severity_overrides:
   HIGH: ERROR
   CRITICAL: ERROR
 
-exclude: []
-  # Add specific checks to exclude if needed
-  # - AWS001
+# Add specific checks to exclude if needed
+# exclude:
+#   - AWS001
 
 exclude_paths:
   - .terraform/
