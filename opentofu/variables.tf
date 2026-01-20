@@ -125,3 +125,21 @@ variable "max_receive_count" {
   type        = number
   default     = 3
 }
+
+variable "kms_key_id" {
+  description = "KMS key ID for encryption (for SQS and CloudWatch Logs)"
+  type        = string
+  default     = null
+}
+
+variable "enable_sqs_encryption" {
+  description = "Enable server-side encryption for SQS queues"
+  type        = bool
+  default     = true
+}
+
+variable "lambda_reserved_concurrent_executions" {
+  description = "Reserved concurrent executions for Lambda function (-1 for unreserved)"
+  type        = number
+  default     = -1
+}

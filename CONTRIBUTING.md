@@ -34,15 +34,19 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 2. Create a feature branch (`git checkout -b feature/amazing-feature`)
 3. Make your changes
 4. Run tests and validation:
+
    ```bash
    terraform fmt -recursive opentofu/
    terraform validate
    pytest test/
    ```
+
 5. Commit your changes using conventional commits:
+
    ```bash
    git commit -m "feat: add amazing feature"
    ```
+
 6. Push to your branch (`git push origin feature/amazing-feature`)
 7. Open a Pull Request
 
@@ -99,7 +103,8 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 - `chore:` - Maintenance tasks
 
 Examples:
-```
+
+```text
 feat: add support for EventBridge event sources
 fix: correct IAM policy for DynamoDB streams
 docs: update README with usage examples

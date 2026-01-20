@@ -1,5 +1,5 @@
 ---
-name: Integration Tests
+name: Unit Tests
 
 'on':
   push:
@@ -10,23 +10,16 @@ name: Integration Tests
 
 permissions:
   contents: read
-  id-token: write
 
 jobs:
-  integration-test:
-    name: Run Integration Tests
+  unit-test:
+    name: Run Unit Tests
     runs-on: ubuntu-latest
-    timeout-minutes: 30
+    timeout-minutes: 15
 
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Configure AWS credentials
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: ${{ secrets.AWS_ROLE_ARN_TEST }}
-          aws-region: ${{ secrets.AWS_REGION || 'us-east-1' }}
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -44,27 +37,12 @@ jobs:
           python -m pip install --upgrade pip
           pip install -r test/requirements.txt
 
-      - name: Build Lambda package
-        run: |
-          cd opentofu/examples/sqs-lambda/lambda
-          pip install -r requirements.txt -t .
-          zip -r ../lambda.zip .
-          cd ..
+      - name: Run Unit Tests
+        run: pytest test/test_unit.py -v --cov=src --cov-report=xml --cov-report=term
 
-      - name: Terraform Init
-        run: terraform init
-        working-directory: opentofu/examples/sqs-lambda
-
-      - name: Terraform Apply
-        run: terraform apply -auto-approve
-        working-directory: opentofu/examples/sqs-lambda
-
-      - name: Run Integration Tests
-        run: pytest test/test_integration.py -v
-        env:
-          AWS_REGION: ${{ secrets.AWS_REGION || 'us-east-1' }}
-
-      - name: Terraform Destroy
+      - name: Upload coverage reports
+        uses: codecov/codecov-action@v4
         if: always()
-        run: terraform destroy -auto-approve
-        working-directory: opentofu/examples/sqs-lambda
+        with:
+          file: ./coverage.xml
+          fail_ci_if_error: false

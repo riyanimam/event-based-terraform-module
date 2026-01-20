@@ -18,19 +18,19 @@ zip -r ../lambda.zip .
 cd ..
 ```
 
-2. Initialize Terraform:
+1. Initialize Terraform:
 
 ```bash
 terraform init
 ```
 
-3. Review the plan:
+1. Review the plan:
 
 ```bash
 terraform plan
 ```
 
-4. Apply the configuration:
+1. Apply the configuration:
 
 ```bash
 terraform apply

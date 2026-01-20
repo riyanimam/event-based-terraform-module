@@ -7,8 +7,9 @@ resource "aws_lambda_function" "event_based_lambda" {
 
   source_code_hash = filebase64sha256(var.source_code_path)
 
-  timeout     = var.lambda_timeout
-  memory_size = var.lambda_memory_size
+  timeout                        = var.lambda_timeout
+  memory_size                    = var.lambda_memory_size
+  reserved_concurrent_executions = var.lambda_reserved_concurrent_executions
 
   environment {
     variables = var.environment_variables
@@ -25,6 +26,7 @@ resource "aws_lambda_function" "event_based_lambda" {
 resource "aws_cloudwatch_log_group" "lambda_logs" {
   name              = "/aws/lambda/${var.function_name}"
   retention_in_days = var.log_retention_days
+  kms_key_id        = var.kms_key_id
 
   tags = merge(
     var.tags,

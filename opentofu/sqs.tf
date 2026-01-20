@@ -6,6 +6,9 @@ resource "aws_sqs_queue" "event_queue" {
   message_retention_seconds  = var.sqs_message_retention_seconds
   receive_wait_time_seconds  = var.sqs_receive_wait_time_seconds
 
+  kms_master_key_id                 = var.enable_sqs_encryption ? var.kms_key_id : null
+  kms_data_key_reuse_period_seconds = var.enable_sqs_encryption ? 300 : null
+
   redrive_policy = var.enable_dlq ? jsonencode({
     deadLetterTargetArn = aws_sqs_queue.dlq[0].arn
     maxReceiveCount     = var.max_receive_count
@@ -24,6 +27,9 @@ resource "aws_sqs_queue" "dlq" {
 
   name                      = "${coalesce(var.sqs_queue_name, var.function_name)}-dlq"
   message_retention_seconds = 1209600 # 14 days
+
+  kms_master_key_id                 = var.enable_sqs_encryption ? var.kms_key_id : null
+  kms_data_key_reuse_period_seconds = var.enable_sqs_encryption ? 300 : null
 
   tags = merge(
     var.tags,
