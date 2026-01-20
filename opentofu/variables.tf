@@ -143,3 +143,15 @@ variable "lambda_reserved_concurrent_executions" {
   type        = number
   default     = -1
 }
+
+variable "eventbridge_event_pattern" {
+  description = "Event pattern for EventBridge rule (JSON string)"
+  type        = string
+  default     = null
+}
+
+variable "eventbridge_schedule_expression" {
+  description = "Schedule expression for EventBridge rule (e.g., 'rate(5 minutes)')"
+  type        = string
+  default     = null
+}

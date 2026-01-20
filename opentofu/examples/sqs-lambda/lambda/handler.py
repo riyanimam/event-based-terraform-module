@@ -22,11 +22,11 @@ def lambda_handler(event, context):
     processed_count = 0
     failed_messages = []
 
-    for record in event['Records']:
+    for record in event["Records"]:
         try:
             # Extract message body
-            body = json.loads(record['body'])
-            message_id = record['messageId']
+            body = json.loads(record["body"])
+            message_id = record["messageId"]
 
             logger.info(f"Processing message {message_id}: {body}")
 
@@ -37,23 +37,14 @@ def lambda_handler(event, context):
 
         except Exception as e:
             logger.error(f"Error processing message {record['messageId']}: {str(e)}")
-            failed_messages.append({
-                'itemIdentifier': record['messageId']
-            })
+            failed_messages.append({"itemIdentifier": record["messageId"]})
 
     # Return batch item failures for partial batch responses
     if failed_messages:
-        return {
-            'batchItemFailures': failed_messages
-        }
+        return {"batchItemFailures": failed_messages}
 
     logger.info(f"Successfully processed {processed_count} messages")
-    return {
-        'statusCode': 200,
-        'body': json.dumps({
-            'processed': processed_count
-        })
-    }
+    return {"statusCode": 200, "body": json.dumps({"processed": processed_count})}
 
 
 def process_message(message):

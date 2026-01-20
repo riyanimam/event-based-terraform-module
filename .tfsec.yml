@@ -6,7 +6,7 @@ severity_overrides:
   HIGH: ERROR
   CRITICAL: ERROR
 
-exclude:
+exclude: []
   # Add specific checks to exclude if needed
   # - AWS001
 
