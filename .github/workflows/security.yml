@@ -29,7 +29,7 @@ jobs:
           working_directory: opentofu/
           soft_fail: false
           format: sarif
-          additional_args: --config-file=.tfsec.yml
+          additional_args: --config-file=../.tfsec.yml
 
       - name: Upload SARIF file
         uses: github/codeql-action/upload-sarif@v3
