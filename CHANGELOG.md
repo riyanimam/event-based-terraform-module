@@ -2,14 +2,15 @@
 
 ### Features
 
-* Stand-Up Placeholder Resources, Code, and Structure ([cadc3e9](https://github.com/riyanimam/event-based-terraform-module/commit/cadc3e9951a40dbe56a76cb5963a3e3732bc976b))
+- Stand-Up Placeholder Resources, Code, and Structure
+  ([cadc3e9](https://github.com/riyanimam/event-based-terraform-module/commit/cadc3e9951a40dbe56a76cb5963a3e3732bc976b))
 
 # Changelog
 
 All notable changes to this project will be documented in this file.
 
-The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
-and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/), and this project adheres to
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
 ## [Unreleased]
 
@@ -66,5 +67,5 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 - Initial stable release
 
-[Unreleased]: https://github.com/yourusername/event-based-terraform-module/compare/v1.0.0...HEAD
 [1.0.0]: https://github.com/yourusername/event-based-terraform-module/releases/tag/v1.0.0
+[unreleased]: https://github.com/yourusername/event-based-terraform-module/compare/v1.0.0...HEAD

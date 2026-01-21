@@ -31,20 +31,28 @@ Enhancement suggestions are tracked as GitHub issues. When creating an enhanceme
 ### Pull Requests
 
 1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Make your changes
-4. Run tests and validation:
+
+1. Create a feature branch (`git checkout -b feature/amazing-feature`)
+
+1. Make your changes
+
+1. Run tests and validation:
+
    ```bash
    terraform fmt -recursive opentofu/
    terraform validate
    pytest test/
    ```
-5. Commit your changes using conventional commits:
+
+1. Commit your changes using conventional commits:
+
    ```bash
    git commit -m "feat: add amazing feature"
    ```
-6. Push to your branch (`git push origin feature/amazing-feature`)
-7. Open a Pull Request
+
+1. Push to your branch (`git push origin feature/amazing-feature`)
+
+1. Open a Pull Request
 
 ## Development Setup
 
@@ -99,7 +107,8 @@ We follow [Conventional Commits](https://www.conventionalcommits.org/):
 - `chore:` - Maintenance tasks
 
 Examples:
-```
+
+```text
 feat: add support for EventBridge event sources
 fix: correct IAM policy for DynamoDB streams
 docs: update README with usage examples
@@ -141,19 +150,19 @@ All contributions should include appropriate tests:
 ## Review Process
 
 1. Automated checks must pass (CI/CD workflows)
-2. Code review by maintainers
-3. Documentation reviewed
-4. Tests verified
-5. Approval and merge
+1. Code review by maintainers
+1. Documentation reviewed
+1. Tests verified
+1. Approval and merge
 
 ## Release Process
 
 This project uses semantic-release for automated versioning and releases:
 
 1. Commits are analyzed for version bumps
-2. CHANGELOG is automatically generated
-3. GitHub release is created
-4. Tags are applied automatically
+1. CHANGELOG is automatically generated
+1. GitHub release is created
+1. Tags are applied automatically
 
 ## Getting Help
 

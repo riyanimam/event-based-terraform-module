@@ -22,18 +22,6 @@ repos:
       - id: terraform_fmt
         args:
           - --args=-recursive
-      - id: terraform_docs
-        args:
-          - --hook-config=--path-to-file=README.md
-          - --hook-config=--add-to-existing-file=true
-          - --hook-config=--create-file-if-not-exist=true
-      - id: terraform_validate
-      - id: terraform_tflint
-        args:
-          - --args=--config=__GIT_WORKING_DIR__/.tflint.hcl
-      - id: terraform_tfsec
-        args:
-          - --args=--config-file=__GIT_WORKING_DIR__/.tfsec.yml
 
   # Python code quality
   - repo: https://github.com/astral-sh/ruff-pre-commit

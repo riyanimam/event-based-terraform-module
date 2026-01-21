@@ -1,8 +1,10 @@
 resource "aws_cloudwatch_event_rule" "event_rule" {
   count = var.event_source_type == "eventbridge" && var.create_event_source ? 1 : 0
 
-  name        = "${var.function_name}-rule"
-  description = "EventBridge rule for ${var.function_name}"
+  name                = "${var.function_name}-rule"
+  description         = "EventBridge rule for ${var.function_name}"
+  event_pattern       = var.eventbridge_event_pattern
+  schedule_expression = var.eventbridge_schedule_expression
 
   tags = var.tags
 }
@@ -24,5 +26,3 @@ resource "aws_lambda_permission" "allow_eventbridge" {
   principal     = "events.amazonaws.com"
   source_arn    = aws_cloudwatch_event_rule.event_rule[0].arn
 }
-
-data "aws_region" "current" {}

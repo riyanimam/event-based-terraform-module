@@ -43,11 +43,9 @@ jobs:
 
       - name: Init TFLint
         run: tflint --init
-        working-directory: opentofu/
 
       - name: Run TFLint
-        run: tflint --format compact --config .tflint.hcl
-        working-directory: opentofu/
+        run: tflint --chdir opentofu/ --format compact --config ../.tflint.hcl
 
   python-quality:
     name: Python Code Quality
