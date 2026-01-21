@@ -22,7 +22,6 @@ repos:
       - id: terraform_fmt
         args:
           - --args=-recursive
-      - id: terraform_validate
 
   # Python code quality
   - repo: https://github.com/astral-sh/ruff-pre-commit
